@@ -2,6 +2,8 @@
 
 // Event Listeners & on.load
 
+//Scrape new articles but don't display ones already saved!!!!?????
+
 
 
 // function displayResults(animals) {
