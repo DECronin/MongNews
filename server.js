@@ -1,18 +1,19 @@
-require("dotenv").config();
+// require("dotenv").config();
 var express = require("express");
-var mongojs = require("mongojs");
-var axios = require("axios");
+// var mongojs = require("mongojs");
+// var axios = require("axios");
 var cheerio = require("cheerio");
 var app = express();
 const path = require("path");
 const exphbs = require("express-handlebars");
+const router = require("./routes/index");
 
-var databaseUrl = "";
-var collections = [""];
-var db = mongojs(databaseUrl, collections);
-db.on("error", function(error) {
-  console.log("Database Error:", error);
-});
+// var databaseUrl = "";
+// var collections = [""];
+// var db = mongojs(databaseUrl, collections);
+// db.on("error", function(error) {
+//   console.log("Database Error:", error);
+// });
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -22,7 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 
-app.use("/", indexRouter, savedRouter, scrapeRouter, commentsRouter);
+app.use("/", router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
