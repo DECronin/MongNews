@@ -1,16 +1,18 @@
-{{!-- model pop-up  --}}
-
-<div>
-    <h1>Comments</h1>
-    <div>
-        {{!-- row>{{generated comments}}{{X-button}} --}}
-    </div>
+<div class="comments-box container">
+  <h5 class="comments-title">Comments</h5>
+  <div class="comments-body row">
+  </div>
+  <hr>
+  <div class="comments-form row">
     <form action="post">
-        <label for="username">Username:</label>
-        <input type="text">
-        <label for="comment">Comment:</label>
-        <textarea name="comment" cols="30" rows="10"></textarea>
-        <button id="submit-comment">Send</button>
+      <label for="username">Username:</label>
+      <input type="text"><br>
+      <label for="comment">Comment:</label>
+      <textarea name="comment" cols="30" rows="10"></textarea>
     </form>
+  </div>
+  <div class="comments-footer row">
     <button id="close-comments">Close</button>
+    <button id="submit-comment">Send</button>
+  </div>
 </div>
