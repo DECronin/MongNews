@@ -2,12 +2,29 @@
   color: #ee6e73;
   font-weight: 300;
 }
-
 body{
   background-image: url(./imgs/announcement-3509489_960_720.jpg);
   background-size: 100% 100%;
   background-attachment: fixed;
 }
 nav{
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(33, 68, 29, 0.75);
+}
+a{
+  color: white;
+  text-shadow: -2.25px 2.25px black;
+}
+#nyt-logo{
+  width: 100px;
+}
+.comments-box{
+  background-color: chartreuse;
+  border: cyan dashed 2px;
+}
+.results{
+  border: cyan dashed 2px;
+  background-color: darkgoldenrod;
+}
+.row{
+  margin: 5px;
 }
