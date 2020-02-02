@@ -2,3 +2,12 @@
   color: #ee6e73;
   font-weight: 300;
 }
+
+body{
+  background-image: url(./imgs/announcement-3509489_960_720.jpg);
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+nav{
+  background-color: rgb(255, 255, 255);
+}
