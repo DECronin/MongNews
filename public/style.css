@@ -19,11 +19,10 @@ a{
 }
 .comments-box{
   background-color: chartreuse;
-  border: cyan dashed 2px;
+  display: none;
 }
 .results{
-  border: cyan dashed 2px;
-  background-color: darkgoldenrod;
+  background-color: rgba(255, 255, 255, 0.85);
 }
 .row{
   margin: 5px;
