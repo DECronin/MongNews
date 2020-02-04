@@ -23,7 +23,6 @@ router.get("/scrape", (req, res) => {
             articles.push(article);
         })
         db.Article.insertMany(articles).then((data) => {
-            console.log(data);
             res.render("index", {newScrape: true, articles: data.map(x => x.toObject())});
         })
     });
