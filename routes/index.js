@@ -1,25 +1,33 @@
 const express = require("express");
 const router = express.Router();
 // var mongojs = require("mongojs");
-// var axios = require("axios");
+const axios = require("axios");
 // var db = require("../models");
-// var cheerio = require("cheerio");
+const cheerio = require("cheerio");
 
-// Root & Articles (Render Scraped Data After Comparing to Saved)
 router.get("/", (req, res) => {
-    // Auto Scrape? or have a general loading directions page?
-    let data = {test: "cake"};
-    res.render("index", data);
+    res.redirect("/scrape");
 });
 
-// Called from Button to Re-Scrape 20 new articles
-    // Test if scraped article already exists in saved?
-// router.get("/scrape", (req, res) => {
-//     // axios.get("")
-//     res.render("index", data);
-// })
+router.get("/scrape", (req, res) => {
+    axios.get("https://www.nytimes.com/").then((result) => {
+        let data = {articles: []};
+        const $ = cheerio.load(result.data);
+        $("div.css-6p6lnl").each((i, el) => {
+            let article = {};
+            article.title = $(el).children("a").children("div").children("h2").text();
+            article.summary = $(el).children("a").children("p").text() || "No Summary Provided. Please explore link for further information.";
+            article.link = "https://www.nytimes.com/" + $(el).children("a").attr("href");
+            data.articles.push(article);
+        })
+        console.log(data);
+        res.render("index", data);
+    });
+})
 
 // Re-Render Index with Saved Article Data
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ get vs put !!!
     // req.params.status === push save article or remove/unsave
 // router.get("/api/saved/:status?", (req, res) => {
 //     if (req.params.status){
