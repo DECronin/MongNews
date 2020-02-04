@@ -21,6 +21,13 @@ const ArticleSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Comment"
   }
+}, {
+  toObject: {
+    virtuals: true,
+  },
+  toJSON: {
+    virtuals: true,
+  }
 });
 const Article = mongoose.model("Article", ArticleSchema);
 module.exports = Article;
