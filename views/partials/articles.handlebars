@@ -1,12 +1,21 @@
 <div class="container">
-  {{!-- {{#if saved}}
+  {{#if saved}}
     <h2 class="row">Savedd Articles</h2>
   {{else}}
     <h2 class="row">Newly Scraped Articles</h2>
-  {{/if}} --}}
+  {{/if}}
   <div class="row">
     <div class="col-8 results">
-        <h3>testing 1 2 3 ?{{test}}</h3>
+        {{#each articles}}
+        <div>
+          <a href="{{link}}"><h3>{{title}}</h3>
+          <p>{{summary}}</p></a>
+          <div class="buttons">
+            <button id="comments-btn">Comments</button>
+            {{#if saved}}<button id="unsave-btn">Unsave</button>{{else}}<button id="save-btn">Save</button>{{/if}}
+          </div>
+        </div>
+        {{/each}}
     </div>
     <div class="col-4">
       {{> comments}}
