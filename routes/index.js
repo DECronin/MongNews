@@ -1,31 +1,39 @@
 const express = require("express");
 const router = express.Router();
-// var mongojs = require("mongojs");
+const mongojs = require("mongojs");
 const axios = require("axios");
-// var db = require("../models");
+const db = require("../models");
 const cheerio = require("cheerio");
 
+
 router.get("/", (req, res) => {
+    // Change to simply pull all unsaved from db
     res.redirect("/scrape");
 });
 
 router.get("/scrape", (req, res) => {
     axios.get("https://www.nytimes.com/").then((result) => {
-        let data = {articles: []};
+        const articles = [];
         const $ = cheerio.load(result.data);
         $("div.css-6p6lnl").each((i, el) => {
             let article = {};
             article.title = $(el).children("a").children("div").children("h2").text();
             article.summary = $(el).children("a").children("p").text() || "No Summary Provided. Please explore link for further information.";
-            article.link = "https://www.nytimes.com/" + $(el).children("a").attr("href");
-            data.articles.push(article);
+            article.link = "https://www.nytimes.com" + $(el).children("a").attr("href");
+            articles.push(article);
         })
-        console.log(data);
-        res.render("index", data);
+        db.Article.insertMany(articles).then((data) => {
+            console.log(data);
+            res.render("index", {newScrape: true, articles: data.map(x => x.toObject())});
+        })
     });
 })
 
-// Re-Render Index with Saved Article Data
+router.get("/saved", (req, res) => {
+    
+})
+
+
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ get vs put !!!
     // req.params.status === push save article or remove/unsave
