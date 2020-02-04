@@ -1,14 +1,14 @@
 <div class="container">
-  {{#if saved}}
-    <h2 class="row">Savedd Articles</h2>
-  {{else}}
+  {{#if newScrape}}
     <h2 class="row">Newly Scraped Articles</h2>
+  {{else}}
+    <h2 class="row">Savedd Articles</h2>
   {{/if}}
   <div class="row">
     <div class="col-8 results">
         {{#each articles}}
         <div>
-          <a href="{{link}}"><h3>{{title}}</h3>
+          <a href={{link}}><h3>{{title}}</h3>
           <p>{{summary}}</p></a>
           <div class="buttons">
             <button id="comments-btn">Comments</button>
