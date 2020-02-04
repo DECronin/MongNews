@@ -1,11 +1,12 @@
 <div class="container">
-  {{#if newScrape}}
+  {{#unless favorited}}
     <h2 class="row">Newly Scraped Articles</h2>
   {{else}}
-    <h2 class="row">Savedd Articles</h2>
-  {{/if}}
+    <h2 class="row">Saved Articles</h2>
+  {{/unless}}
   <div class="row">
     <div class="col-8 results">
+      {{!-- {{#each_upto articles 20}} --}}{{! -- Limits loop to display first 20 articles instead of all // Requires Helper? debug --}}
         {{#each articles}}
         <div>
           <a href={{link}}><h3>{{title}}</h3>
