@@ -71,7 +71,7 @@ router.post("api/del-comment/:id", (req, res) => {
 })
 
 // Update Saved/Unsaved Articles 
-router.post("api/articles/:id/:status", (req, res) => {
+router.post("/api/articles/:id/:status", (req, res) => {
     let status = req.params.status === "save" ? true : false;
     db.Article.update({_id: req.params.id}, {$set: {saved: status}}).then((data) => res.send(data));
 })
