@@ -13,7 +13,7 @@
           <p>{{summary}}</p></a>
           <div class="buttons">
             <button id="comments-btn">Comments</button>
-            {{#if saved}}<button class="unsave-btn">Unsave</button>{{else}}<button data-id="{{_id}}" class="save-btn">Save</button>{{/if}}
+            {{#if saved}}<button data-id="{{_id}}" class="unsave-btn">Unsave</button>{{else}}<button data-id="{{_id}}" class="save-btn">Save</button>{{/if}}
           </div>
         </div>
         {{/each}}

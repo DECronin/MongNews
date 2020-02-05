@@ -1,23 +1,24 @@
+
 // Save Button
 $(".save-btn").on("click", () => {
     event.preventDefault();
     let thisId = $(event.currentTarget).attr("data-id");
     console.log(`save: ${thisId}`);
-    // $.ajax({
-    //     method: "POST",
-    //     url: "/articles/" + thisId + "save",
-    // }).then(location.reload())
+    $.ajax({
+        method: "POST",
+        url: "/api/articles/" + thisId + "/save",
+    })
 })
 
 // Unsave Button
 $(".unsave-btn").on("click", () => {
     event.preventDefault();
-    let thisId = $(this).attr("data-id");
-    // console.log(`unsave: ${thisId}`);
-    // $.ajax({
-    //     method: "POST",
-    //     url: "/articles/" + thisId + "unsave",
-    // }).then(location.reload())
+    let thisId = $(event.currentTarget).attr("data-id");
+    console.log(`unsave: ${thisId}`);
+    $.ajax({
+        method: "POST",
+        url: "/api/articles/" + thisId + "/unsave",
+    })
 })
 
 // Display Comments Button
