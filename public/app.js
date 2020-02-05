@@ -20,16 +20,28 @@ $(".unsave-btn").on("click", () => {
 })
 
 // Display Comments Button
-$("#comments-btn").on("click", () => {
+$(".comments-btn").on("click", () => {
     event.preventDefault();
+    $(".comments-box").show();
     let thisId = $(event.currentTarget).attr("data-id");
     console.log('click = ' + thisId);
-    // $(".comments-body").empty();
+    $(".comments-body").empty();
+    $(".submit-comment").remove();
     $.ajax({
         method: "GET",
         url: "/api/comments/" + thisId
     }).then(data => {
-        console.log(`comments:\n========\n${data}`);
+        console.log(`comments:\n========\n${JSON.stringify(data)}\n\nArray:\n`);
+        let commentsArray = [data.comment];
+        console.log(commentsArray);
+        commentsArray.forEach(el => {
+            let newDiv = $("<div class='row comment-block'>");
+            newDiv.append(`<h3 class='li-user col-10'>${el.user}</h3>`);
+            newDiv.append(`<p class='li-body col-10'>${el.body}</p>`);
+            newDiv.append(`<button class='delete-comment col-2' data-id=${el.id}>X</button>`)
+            $(".comments-body").append(newDiv);
+        });
+        $(".comments-footer").append(`<button class='submit-comment' data-id=${data._id}>Send</button>`);
     })
 })
 {/* <button id="submit-comment">Send</button> */}
@@ -38,7 +50,7 @@ $("#comments-btn").on("click", () => {
 // get method
 
 // Send New Comment Button
-// $("#submit-comment")
+// $(".submit-comment")
 // $.ajax({
 //         method: "POST",
 //         url: "/articles/" + thisId,
@@ -56,5 +68,8 @@ $("#comments-btn").on("click", () => {
 // grab id
 
 // Close Comments Display
-// $(".close-comments")
+$(".close-comments").on("click", () => {
+    $(".comments-body").empty();
+    $(".comments-box").hide();
+})
 // set css display to none
