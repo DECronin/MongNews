@@ -3,7 +3,6 @@
 $(".save-btn").on("click", () => {
     event.preventDefault();
     let thisId = $(event.currentTarget).attr("data-id");
-    console.log(`save: ${thisId}`);
     $.ajax({
         method: "POST",
         url: "/api/articles/" + thisId + "/save",
@@ -14,7 +13,6 @@ $(".save-btn").on("click", () => {
 $(".unsave-btn").on("click", () => {
     event.preventDefault();
     let thisId = $(event.currentTarget).attr("data-id");
-    console.log(`unsave: ${thisId}`);
     $.ajax({
         method: "POST",
         url: "/api/articles/" + thisId + "/unsave",
