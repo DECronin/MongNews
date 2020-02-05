@@ -1,7 +1,7 @@
 // Save Button
-$("#save-btn").on("click", () => {
+$(".save-btn").on("click", () => {
     event.preventDefault();
-    let thisId = $(event.currentTarget).attr("data-num");
+    let thisId = $(event.currentTarget).attr("data-id");
     console.log(`save: ${thisId}`);
     // $.ajax({
     //     method: "POST",
@@ -10,7 +10,7 @@ $("#save-btn").on("click", () => {
 })
 
 // Unsave Button
-$("#unsave-btn").on("click", () => {
+$(".unsave-btn").on("click", () => {
     event.preventDefault();
     let thisId = $(this).attr("data-id");
     // console.log(`unsave: ${thisId}`);
