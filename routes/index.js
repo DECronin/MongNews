@@ -60,12 +60,7 @@ router.get("/saved", (req, res) => {
 
 // Pull/Display Comments
 router.get("/api/comments/:id", (req, res) => {
-    console.log('api');
-    res.send(req.params.id);
-    // db.Article.findOne({ _id: req.params.id }).populate("comment").then((data) => {
-    //     console.log(`db -connection:\n\n${data}`);
-    //     res.send(data)
-    // })
+    db.Article.findOne({ _id: req.params.id }).populate("comment").then((data) => res.send(data))
 })
 
 // Create Comment
