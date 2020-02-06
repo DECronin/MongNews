@@ -33,12 +33,11 @@ router.get("/scrape", (req, res) => {
             // Populate blank comments for each new article
             data.forEach(c => {
                 db.Comment.create({ user: "", body: "" }).then(comData => {
-                    console.log(comData);
                     db.Article.update({
                         _id: c.id
                     }, {
                         $set: {
-                            comment: [comData.id]
+                            comment: comData
                         }
                     }, (err, Cdata) => {
                         err ? console.log(err) : '';
@@ -64,13 +63,13 @@ router.get("/api/comments/:id", (req, res) => {
 })
 
 // Create Comment
-router.post("api/new-comment/:id", (req, res) => {
-    db.Comment.create(req.body).then((comData) => {
+router.post("/api/new-comment/:id", (req, res) => {
+   db.Comment.create(req.body).then((comData) => {
         db.Article.update({
             _id: req.params.id
         }, {
             $push: {
-                comment: comData.id
+                comment: comData._id
             }
         }, (err, data) => {
             err ? console.log(err) : res.send(data);
@@ -79,7 +78,7 @@ router.post("api/new-comment/:id", (req, res) => {
 })
 
 // Delete Comment
-router.post("api/del-comment/:id", (req, res) => {
+router.post("/api/del-comment/:id", (req, res) => {
     db.Comments.remove({ _id: req.params.id }).then((data) => res.send(data));
 })
 
