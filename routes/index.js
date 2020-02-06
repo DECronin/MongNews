@@ -59,7 +59,7 @@ router.get("/saved", (req, res) => {
 
 // Pull/Display Comments
 router.get("/api/comments/:id", (req, res) => {
-    db.Article.findOne({ _id: req.params.id }).populate("comment").then((data) => res.send(data))
+    db.Article.findById(req.params.id).populate("comment").then((data) => res.send(data))
 })
 
 // Create Comment
@@ -79,7 +79,7 @@ router.post("/api/new-comment/:id", (req, res) => {
 
 // Delete Comment
 router.post("/api/del-comment/:id", (req, res) => {
-    db.Comments.remove({ _id: req.params.id }).then((data) => res.send(data));
+    db.Comment.remove({ _id: req.params.id }).then((data) => res.send(data));
 })
 
 // Update Saved/Unsaved Articles 
