@@ -1,4 +1,5 @@
 function populateCommentsBox(thisId) {
+    console.log(`repopulating==== ${thisId}`);
     $(".comments-body").empty();
     $(".submit-comment").remove();
     $.ajax({
@@ -11,7 +12,7 @@ function populateCommentsBox(thisId) {
                 let newDiv = $("<div class='row comment-block'>");
                 newDiv.append(`<h3 class='li-user col-10'>${el.user}</h3>`);
                 newDiv.append(`<p class='li-body col-10'>${el.body}</p>`);
-                newDiv.append(`<button class='delete-comment col-2' data-id=${el._id}>X</button>`)
+                newDiv.append(`<button class='delete-comment col-2' data-id=${el._id} data-articleid="${thisId}">X</button>`)
                 $(".comments-body").append(newDiv);
             }
         });
@@ -64,9 +65,17 @@ $(document).on("click", ".submit-comment", () => {
         })
 })
 // Delete Comment Button
-// $(".delete-comment")
-// ajax post
-// grab id
+$(document).on("click", ".delete-comment", () => {
+    event.preventDefault();
+    let thisId = $(event.srcElement).attr("data-id");
+    let articleId = $(event.srcElement).attr("data-articleid");
+    $.ajax({
+        method: "POST",
+        url: "/api/del-comment/" + thisId
+    }).then(data => {
+        populateCommentsBox(articleId);
+    })
+})
 
 // Close Comments Display
 $(".close-comments").on("click", () => {
