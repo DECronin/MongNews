@@ -1,5 +1,6 @@
 function populateCommentsBox(thisId) {
-    console.log(`repopulating==== ${thisId}`);
+    $("#userinput").val(''),
+    $("#bodyinput").val('')
     $(".comments-body").empty();
     $(".submit-comment").remove();
     $.ajax({
