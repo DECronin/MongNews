@@ -47,6 +47,8 @@ $(".unsave-btn").on("click", () => {
 $(".comments-btn").on("click", () => {
     event.preventDefault();
     let thisId = $(event.currentTarget).attr("data-id");
+    $(".active-article-display").removeClass("active-article-display");
+    $(event.currentTarget).parent().parent().addClass("active-article-display");
     $(".comments-box").show();
     populateCommentsBox(thisId);
 })
