@@ -15,12 +15,14 @@ mongoose.connect("mongodb://localhost/mongnews", { useNewUrlParser: true });
 
 app.use("/", router);
 
-app.listen(3000, function() {
+let PORT = process.env.PORT || 3000
+
+app.listen(PORT, function() {
 console.log("App running on port 3000!");
 });
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongnews";
 mongoose.connect(MONGODB_URI);
 
 module.exports = app;
