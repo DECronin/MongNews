@@ -1,10 +1,9 @@
 <div class="container">
   <div class="row">
-  {{#unless favorited}}
-    <h2 class="col-8">Newly Scraped Articles</h2>
-  {{else}}
-    <h2 class="col-8">Saved Articles</h2>
-  {{/unless}}
+   
+  {{#if active_home}}<h2 class="col-8">General Articles</h2>{{/if}}
+  {{#if active_saved}}<h2 class="col-8">Saved Articles</h2>{{/if}}
+  {{#if active_new}}<h2 class="col-8">Newly Scraped Articles</h2>{{/if}}
     <div class="col-8 results">
       {{!-- {{#each_upto articles 20}} --}}{{! -- Limits loop to display first 20 articles instead of all // Requires Helper? debug --}}
         {{#each articles}}
