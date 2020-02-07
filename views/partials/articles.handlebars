@@ -1,17 +1,17 @@
 <div class="container">
-  {{#unless favorited}}
-    <h2 class="row">Newly Scraped Articles</h2>
-  {{else}}
-    <h2 class="row">Saved Articles</h2>
-  {{/unless}}
   <div class="row">
+  {{#unless favorited}}
+    <h2 class="col-8">Newly Scraped Articles</h2>
+  {{else}}
+    <h2 class="col-8">Saved Articles</h2>
+  {{/unless}}
     <div class="col-8 results">
       {{!-- {{#each_upto articles 20}} --}}{{! -- Limits loop to display first 20 articles instead of all // Requires Helper? debug --}}
         {{#each articles}}
-        <div>
-          <a href={{link}}><h3>{{title}}</h3>
+        <div class="article-wrapper">
+          <a href={{link}} class="articles-divs" target="_blank"><h4>{{title}}</h4>
           <p>{{summary}}</p></a>
-          <div class="buttons">
+          <div class="buttons article-footer">
             <button data-id="{{_id}}" class="comments-btn">Comments</button>
             {{#if saved}}<button data-id="{{_id}}" class="unsave-btn">Unsave</button>{{else}}<button data-id="{{_id}}" class="save-btn">Save</button>{{/if}}
           </div>
