@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const mongojs = require("mongojs");
 const axios = require("axios");
 const db = require("../models");
 const cheerio = require("cheerio");
@@ -8,7 +7,7 @@ const cheerio = require("cheerio");
 
 router.get("/", (req, res) => {
     db.Article.find({ saved: false }).sort({ dateCreated: -1 }).then(data => {
-        res.render("index", { favorited: false, articles: data.map(x => x.toObject()) })
+        res.render("index", { active_home: true, articles: data.map(x => x.toObject()) })
     })
 });
 
@@ -44,14 +43,14 @@ router.get("/scrape", (req, res) => {
                     })
                 })
             })
-            res.render("index", { favorited: false, articles: data.map(x => x.toObject()) });
+            res.render("index", { active_new: true, articles: data.map(x => x.toObject()) });
         });
     })
 })
 
 router.get("/saved", (req, res) => {
     db.Article.find({ saved: true }).sort({ dateCreated: -1 }).then(data => {
-        res.render("index", { favorited: true, articles: data.map(x => x.toObject()) })
+        res.render("index", { active_saved: true, articles: data.map(x => x.toObject()) })
     })
 })
 
