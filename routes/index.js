@@ -21,13 +21,9 @@ router.get("/scrape", (req, res) => {
             article.link = "https://www.nytimes.com" + $(el).children("a").attr("href");
             // test if article already exists
             db.Article.find({ link: article.link }).then(data => {
-                console.log(i + ': ');
                 if (data.length > 0) {
-                    console.log('Article Already Scraped');
+                    console.log(`${i}: Article Already Scraped`);
                 } else {
-                    console.log(`length > 0: ${data.length}`);
-                    articles.push(article);
-
                     db.Article.insert(article).then((data) => {
                         // Populate blank comments for each new article
                         data.forEach(c => {
@@ -48,7 +44,6 @@ router.get("/scrape", (req, res) => {
             })
         });
     }).then(() => {
-        console.log(`==============`);
         res.redirect("/");
     })
 })
