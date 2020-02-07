@@ -1,26 +1,26 @@
 <div class="container">
   <div class="row">
-   
-  {{#if active_home}}<h2 class="col-8">General Articles</h2>{{/if}}
-  {{#if active_saved}}<h2 class="col-8">Saved Articles</h2>{{/if}}
-  {{#if active_new}}<h2 class="col-8">Newly Scraped Articles</h2>{{/if}}
+    {{#if active_home}}<h2 class="col-8">Scraped Articles</h2>{{/if}}
+    {{#if active_saved}}<h2 class="col-8">Saved Articles</h2>{{/if}}
     <div class="col-8 results">
       {{!-- {{#each_upto articles 20}} --}}{{! -- Limits loop to display first 20 articles instead of all // Requires Helper? debug --}}
-        {{#each articles}}
-        <div class="article-wrapper">
-          <a href={{link}} class="articles-divs" target="_blank"><h4>{{title}}</h4>
-          <p>{{summary}}</p></a>
-          <div class="buttons article-footer">
-            <button data-id="{{_id}}" class="comments-btn">Comments</button>
-            {{#if saved}}<button data-id="{{_id}}" class="unsave-btn">Unsave</button>{{else}}<button data-id="{{_id}}" class="save-btn">Save</button>{{/if}}
-          </div>
+      {{#each articles}}
+      <div class="article-wrapper">
+        <a href={{link}} class="articles-divs" target="_blank">
+          <h4>{{title}}</h4>
+          <p>{{summary}}</p>
+        </a>
+        <div class="buttons article-footer">
+          <button data-id="{{_id}}" class="comments-btn">Comments</button>
+          {{#if saved}}<button data-id="{{_id}}" class="unsave-btn">Unsave</button>{{else}}<button data-id="{{_id}}"
+            class="save-btn">Save</button>{{/if}}
         </div>
-        {{/each}}
+      </div>
+      {{/each}}
     </div>
     <div class="col-4">
       {{> comments}}
     </div>
   </div>
-  
-</div>
 
+</div>
