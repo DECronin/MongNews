@@ -11,9 +11,11 @@ function populateCommentsBox(thisId) {
         commentsArray.forEach((el, i) => {
             if (i > 0){
                 let newDiv = $("<div class='row comment-block'>");
-                newDiv.append(`<h3 class='li-user col-10'>${el.user}</h3>`);
-                newDiv.append(`<p class='li-body col-10'>${el.body}</p>`);
-                newDiv.append(`<button class='delete-comment col-2' data-id=${el._id} data-articleid="${thisId}">X</button>`)
+                let textSection = $("<div class='text-section col-10'>");
+                textSection.append(`<h5 class='li-user row'>${el.user}</h3>`);
+                textSection.append(`<p class='li-body col-eow'>${el.body}</p>`);
+                newDiv.append(textSection);
+                newDiv.append(`<button class='delete-comment col-1' data-id=${el._id} data-articleid="${thisId}">X</button>`)
                 $(".comments-body").append(newDiv);
             }
         });
@@ -28,7 +30,7 @@ $(".save-btn").on("click", () => {
     $.ajax({
         method: "POST",
         url: "/api/articles/" + thisId + "/save",
-    })
+    }).then(location.reload())
 })
 
 // Unsave Button
@@ -38,7 +40,7 @@ $(".unsave-btn").on("click", () => {
     $.ajax({
         method: "POST",
         url: "/api/articles/" + thisId + "/unsave",
-    })
+    }).then(location.reload())
 })
 
 // Display Comments Button
