@@ -86,4 +86,5 @@ $(document).on("click", ".delete-comment", () => {
 $(".close-comments").on("click", () => {
     $(".comments-body").empty();
     $(".comments-box").hide();
+    $(".active-article-display").removeClass("active-article-display");
 })
