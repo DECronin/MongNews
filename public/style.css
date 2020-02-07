@@ -1,6 +1,7 @@
 .active {
-  color: #ee6e73;
-  font-weight: 300;
+  color: rgb(3, 241, 182);
+  font-weight: 115%;
+  font-size: 120%;
 }
 body{
   background-image: url(./imgs/announcement-3509489_960_720.jpg);
