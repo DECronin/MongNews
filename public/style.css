@@ -113,3 +113,12 @@ color: rgb(0, 179, 134);
 background-color: rgb(0, 179, 134, 0);
 font-size: 215%;
 }
+.active-article-display{
+  margin: 10px;
+  background-color: rgba(170, 243, 162, 0.85) !important;
+  border: 10px solid rgba(33, 68, 29, 0.8);
+}
+.active-article-display a{
+  color: black !important;
+  text-shadow: -1px 1px white !important;
+}
