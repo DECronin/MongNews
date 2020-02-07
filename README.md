@@ -25,7 +25,7 @@
 - Navigate between Saved and Unsaved(Home) with links at top of page
 - _Click_ "Scrape New" to pull New Article's and their information from today's NYT Front-Page and send them to the Database if they Do Not already exist
 
-#### Demonstration(s):
+#### Demonstration View:
 ![Saved-Screenshot-w/-Comment](public/imgs/saved-screenshot-w-comment.jpg)
 
 ### Resources:
