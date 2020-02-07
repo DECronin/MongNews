@@ -4,6 +4,24 @@
 ### [Concept/Requirements](https://github.com/UCF-Coding-Boot-Camp/UCF-LKM-FSF-PT-08-2019-U-C/blob/master/old_curriculum/18-mongo-mongoose/02-Homework/Instructions/homework_instructions.md)
 
 ### How To Use:
+- The Home Page of the website/app displays all of the database's "unsaved" and previously Scraped Articles from the home-pages of the [New York Times](https://www.nytimes.com/) whereas the Saved Page displayes all of the database's articles marked "Saved".
+    - These Articles' Display-Blocks are a link:
+        - _Opening Full NYT-Article in New Tab (May Ask User to Login to View)_
+        - Headline
+        - Summary
+        - Comments Button _(Clisk to Display:)_
+            - Active-Article Stands Out
+            - All of this Atricle's Available Comments'
+                - User
+                - Comment
+                - "X" Button to Delete Associated Comment
+            - New Comment Form
+                - User Input
+                - Comment Input
+                - "Send" Comment Button
+            - "Close" Comment View Button _(Makes Comments Box Invisible Again)_
+        - Save or Unsave Button _(Updates Status in Database)_
+
 
 #### Demonstration(s):
 
@@ -17,4 +35,4 @@
 - [Cheerio](https://cheerio.js.org/)
 - [Axios](https://www.npmjs.com/package/axios)
 - [Visual Studio Code](https://code.visualstudio.com/)
-- [New York Times](https://www.nytimes.com/)
+- [New York Times Website](https://www.nytimes.com/)
