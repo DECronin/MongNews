@@ -13,38 +13,43 @@ router.get("/", (req, res) => {
 
 router.get("/scrape", (req, res) => {
     axios.get("https://www.nytimes.com/").then((result) => {
-        const articles = [];
         const $ = cheerio.load(result.data);
         $("div.css-6p6lnl").each((i, el) => {
             let article = {};
             article.title = $(el).children("a").children("div").children("h2").text();
             article.summary = $(el).children("a").children("p").text() || "No Summary Provided. Please explore link for further information.";
             article.link = "https://www.nytimes.com" + $(el).children("a").attr("href");
-            // // test if article already exists in db
-            // needs some kind of async await maybe?
-            // db.Article.find({link: article.link}).then(data => {
-            //     console.log(i +': ' + data);
-            //     data.length > 0 ? console.log('Article Already Scraped') : articles.push(article);
-            // })  
-            articles.push(article);
-        })
-        db.Article.insertMany(articles).then((data) => {
-            // Populate blank comments for each new article
-            data.forEach(c => {
-                db.Comment.create({ user: "", body: "" }).then(comData => {
-                    db.Article.update({
-                        _id: c.id
-                    }, {
-                        $set: {
-                            comment: comData
-                        }
-                    }, (err, Cdata) => {
-                        err ? console.log(err) : '';
-                    })
-                })
+            // test if article already exists
+            db.Article.find({ link: article.link }).then(data => {
+                console.log(i + ': ');
+                if (data.length > 0) {
+                    console.log('Article Already Scraped');
+                } else {
+                    console.log(`length > 0: ${data.length}`);
+                    articles.push(article);
+
+                    db.Article.insert(article).then((data) => {
+                        // Populate blank comments for each new article
+                        data.forEach(c => {
+                            db.Comment.create({ user: "", body: "" }).then(comData => {
+                                db.Article.update({
+                                    _id: c.id
+                                }, {
+                                    $set: {
+                                        comment: comData
+                                    }
+                                }, (err, Cdata) => {
+                                    err ? console.log(err) : '';
+                                })
+                            })
+                        })
+                    });
+                }
             })
-            res.render("index", { active_new: true, articles: data.map(x => x.toObject()) });
         });
+    }).then(() => {
+        console.log(`==============`);
+        res.redirect("/");
     })
 })
 
@@ -63,7 +68,7 @@ router.get("/api/comments/:id", (req, res) => {
 
 // Create Comment
 router.post("/api/new-comment/:id", (req, res) => {
-   db.Comment.create(req.body).then((comData) => {
+    db.Comment.create(req.body).then((comData) => {
         db.Article.update({
             _id: req.params.id
         }, {
