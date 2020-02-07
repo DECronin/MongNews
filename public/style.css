@@ -10,24 +10,105 @@ body{
 nav{
   background-color: rgba(33, 68, 29, 0.75);
 }
+.page-header,
 a{
   color: white;
   text-shadow: -2.25px 2.25px black;
+}
+.page-header{
+  padding-right: 20vw;
 }
 #nyt-logo{
   width: 100px;
 }
 .comments-box{
-  background-color: chartreuse;
+  background-color: rgba(33, 68, 29, 0.75);
+  color: rgb(247, 241, 232);
+  text-shadow: -1.5px 1.5px black;
+  overflow: auto;
   display: none;
 }
+label{
+  margin: 7.5px;
+}
+input{
+  width: 72%;
+}
 .results{
-  background-color: rgba(255, 255, 255, 0.85);
+  height: auto;
 }
 .row{
   margin: 5px;
 }
-
-/* h2 */
-/* Articles Divs*/
-/* Comments Box & Form */
+h2{
+  color: rgb(24, 24, 24, 0.95);
+  font-weight: bold;
+  text-shadow: -1px 1px rgb(255, 255, 255, 0.75), 0px 1px rgb(255, 255, 255, 0.75), 1px -1px rgb(255, 255, 255, 0.75), 0px -1px rgb(255, 255, 255, 0.75);
+  background-color: rgb(128, 128, 128, 0.6);
+  text-align: center;
+}
+div.article-wrapper{
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 10px;
+}
+a.articles-divs{
+  color: rgb(17, 17, 17);
+  text-shadow: none;
+}
+a.articles-divs:hover{
+color: rgb(0, 179, 134);
+text-shadow: -1.5px 1.5px rgb(94, 94, 94);
+font-size: 125%;
+}
+div.comments-footer{
+  padding-left: 35%;
+}
+div.article-footer{
+  padding-right: 10%;
+  text-align: right;
+}
+div.comments-box{
+  height: 75vh;
+  padding: 10px;
+  position: fixed;
+  top: 20vh;
+  width: 25vw;
+}
+.comments-title{
+  padding-left: 35%;
+  text-decoration: underline rgb(128, 128, 128, 0.65);
+}
+button{
+  font-weight: 600;
+  margin: 5px;
+  background-color: rgb(128, 128, 128, 0.4);
+  text-shadow: -1.15px 1.15px white;
+  border: outset;
+}
+button.close-comments,
+button.submit-comment{
+  color: rgb(247, 241, 232);
+  text-shadow: -1.25px 1.25px black;
+  font-weight: 550;
+  background-color: rgb(128, 128, 128, 0.75);
+}
+.comment-block{
+  width: 100%;
+}
+button.delete-comment{
+  font-weight: 650;
+  font-size: 200%;
+  padding-right: 20px;
+  height: 50%;
+  color: rgb(167, 21, 21);
+  border: none;
+  background-color: rgb(245, 245, 245, 0);
+}
+button:hover{
+background-color: rgb(0, 179, 134);
+}
+button.delete-comment:hover{
+color: rgb(0, 179, 134);
+background-color: rgb(0, 179, 134, 0);
+font-size: 215%;
+}
