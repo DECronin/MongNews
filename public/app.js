@@ -58,16 +58,20 @@ $(document).on("click", ".submit-comment", () => {
     event.preventDefault();
     let thisId = $(event.srcElement).attr("data-id");
     let data = {
-        user: $("#userinput").val(),
+        user: $("#userinput").val() || "Anonymous",
         body: $("#bodyinput").val()
     };
-    $.ajax({
-            method: "POST",
-            url: "/api/new-comment/" + thisId,
-            data: data
-        }).then(data => {
-            populateCommentsBox(thisId);
-        })
+    if(data.body === ""){
+        alert("Please Provide a Comment.")
+    } else {
+        $.ajax({
+                method: "POST",
+                url: "/api/new-comment/" + thisId,
+                data: data
+            }).then(data => {
+                populateCommentsBox(thisId);
+            })
+    }
 })
 // Delete Comment Button
 $(document).on("click", ".delete-comment", () => {
