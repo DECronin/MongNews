@@ -1,5 +1,5 @@
 # [MongNews](https://mongnews.herokuapp.com/)
-### By: [Dana Cronin](decronin.github.io)
+### By: [Dana Cronin](https://decronin.herokuapp.com/)
 
 ### [Concept/Requirements](https://github.com/UCF-Coding-Boot-Camp/UCF-LKM-FSF-PT-08-2019-U-C/blob/master/old_curriculum/18-mongo-mongoose/02-Homework/Instructions/homework_instructions.md)
 
